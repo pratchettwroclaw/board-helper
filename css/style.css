@@ -15,3 +15,7 @@
 body {
     background: #ddd;
 }
+
+#template {
+    display: none;
+}

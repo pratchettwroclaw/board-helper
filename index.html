@@ -16,9 +16,9 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body>
+<body onload="render()">
     <div class="container">
-        <form class="form-horizontal">
+        <form class="form-horizontal" onchange="update()">
         <div class="row">
         <div class="col-xs-4">
           <div class="form-group">
@@ -57,9 +57,35 @@
           </div>
         </div>
         </div>
-        </form>
+    </form>
+        <div id="board"></div>
+    <div class="well well-sm">
+        <strong>Legend:</strong>
+        <span class="label label-default">Default</span>
+        <span class="label label-primary">Primary</span>
+        <span class="label label-success">Success</span>
+        <span class="label label-info">Info</span>
+        <span class="label label-warning">Warning</span>
+        <span class="label label-danger">Danger</span>
     </div>
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/mustache.min.js"></script>
+    <script>
+    function update() {
+        render({board: [[1,2][3,4]]});
+    }
+    function render(b) {
+        var template = $('#template').html();
+        Mustache.parse(template);
+        var rendered = Mustache.render(template, b);
+        $('#board').html(rendered);
+    }
+    </script>
+    <div id="template">ddddddd
+    {{#board}}
+dddd
+    {{/board}}
+    </div>
 </body>
 </html>
