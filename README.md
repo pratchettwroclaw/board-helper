@@ -3,6 +3,8 @@ Board games helper
 
 aka pomocnik do gier na makietach, no idea how to translate it better
 
+[![Build Status](https://travis-ci.org/pratchettwroclaw/board-helper.svg?branch=master)](https://travis-ci.org/pratchettwroclaw/board-helper)
+
 Planned features
 ----------------
 

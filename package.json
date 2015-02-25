@@ -13,7 +13,8 @@
   "devDependencies": {
     "nodeunit": "~0.8.1",
     "jscoverage": "~0.3.7",
-    "coveralls": "~2.0.16"
+    "coveralls": "~2.0.16",
+    "sinon": "1.12.2"
   },
   "license": "GPLv2"
 }
