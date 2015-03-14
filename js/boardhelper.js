@@ -61,8 +61,8 @@ var boardHelper = {
         var retval = sampler.sampleUntilSolution().slice(0,numberOfPoints);
         for (var i=0; i<retval.length; i++) {
             retval[i]["number"] = i+1;
-            retval[i]["xstr"] = +(retval[i]["x"]).toFixed(2);
-            retval[i]["ystr"] = +(retval[i]["y"]).toFixed(2);
+            retval[i]["xstr"] = Math.round(retval[i]["x"]);
+            retval[i]["ystr"] = Math.round(retval[i]["y"]);
         }
         return retval;
     },
