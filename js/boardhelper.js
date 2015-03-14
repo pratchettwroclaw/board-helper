@@ -12,6 +12,11 @@ var boardHelper = {
                                          $("#golds").val(),
                                          $("#goldrnd").val()),
         });
+        boardHelper.renderKeys({
+            teams: boardHelper.generateBoard($("#board-size").val(),
+                                             $("#chests-no").val(),
+                                             $("#mdbk").val()),
+        });
     },
     calcGold: function(board, goldAmount, goldRandomness) {
         var chestGolds = [];
@@ -30,6 +35,12 @@ var boardHelper = {
             x["gold"] = chestGolds.pop();
         });
         return board;
+    },
+    renderKeys: function(b) {
+        var template = $('#teamstemplate').html();
+        Mustache.parse(template);
+        var rendered = Mustache.render(template, b);
+        $('#keys').html(rendered);
     },
     renderTeams: function(b) {
         var template = $('#teamstemplate').html();

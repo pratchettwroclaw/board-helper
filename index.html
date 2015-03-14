@@ -27,6 +27,12 @@
               <input type="text" class="form-control" id="board-size" placeholder="XX*XX" value="100*100">
             </div>
           </div>
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-4 control-label" title="Minimum distance between keys">MDBK</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="mdbk" placeholder="Minimum distance between keys" value="15">
+            </div>
+          </div>
         </div>
         <div class="col-xs-3">
           <div class="form-group">
@@ -107,6 +113,22 @@
                 </tr>
               </thead>
               <tbody id="chests">
+              </tbody>
+              </table>
+          </div>
+          <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Keys</h3>
+              </div>
+              <table class="table table-condensed">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>x</th>
+                  <th>y</th>
+                </tr>
+              </thead>
+              <tbody id="keys">
               </tbody>
               </table>
           </div>
