@@ -60,19 +60,47 @@
         </div>
     </form>
     <div class="text-center"><button type="button" class="btn btn-lg btn-primary hidden-print" onclick="boardHelper.update()">Recalculate</button></div>
-    <h3>Teams</h3>
-    <div>
-        <table class="table">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>x</th>
-            <th>y</th>
-          </tr>
-        </thead>
-        <tbody id="teams">
-        </tbody>
-        <table>
+    <div class="row mainrow">
+      <div class="col-md-6">
+          <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Teams</h3>
+              </div>
+              <div class="panel-body">
+                  <table class="table">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>x</th>
+                      <th>y</th>
+                    </tr>
+                  </thead>
+                  <tbody id="teams">
+                  </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-6">
+          <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Chests</h3>
+              </div>
+              <div class="panel-body">
+                  <table class="table">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>x</th>
+                      <th>y</th>
+                    </tr>
+                  </thead>
+                  <tbody id="chests">
+                  </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
     </div>
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -82,8 +110,8 @@
     {{#teams}}
       <tr>
         <th>{{number}}</th>
-        <td>{{x}}</td>
-        <td>{{y}}</td>
+        <td>{{xstr}}</td>
+        <td>{{ystr}}</td>
       </tr>
     {{/teams}}
     </script>

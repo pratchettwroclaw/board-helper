@@ -5,9 +5,6 @@ var boardHelper = {
                                              $("#teams-no").val(),
                                              $("#mdbt").val()),
         });
-        console.log(JSON.stringify(boardHelper.generateBoard($("#board-size").val(),
-                                                             $("#teams-no").val(),
-                                                             $("#mdbt").val())));
     },
     render: function(b) {
         var template = $('#teamstemplate').html();
@@ -22,6 +19,8 @@ var boardHelper = {
         var retval = sampler.sampleUntilSolution().slice(0,numberOfPoints);
         for (var i=0; i<retval.length; i++) {
             retval[i]["number"] = i+1;
+            retval[i]["xstr"] = +(retval[i]["x"]).toFixed(2);
+            retval[i]["ystr"] = +(retval[i]["y"]).toFixed(2);
         }
         return retval;
     },
