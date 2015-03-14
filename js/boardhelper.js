@@ -28,10 +28,11 @@ var boardHelper = {
     parseSizeText: function(sizeText) {
         var res = sizeText.split("*");
         if (res.length !== 2) return null;
-        res.width = parseInt(res[0]);
-        res.height = parseInt(res[1]);
-        if (isNaN(res[0]) || isNaN(res[1])) return null;
-        return res;
+        retval = {};
+        retval.width = parseInt(res[0]);
+        retval.height = parseInt(res[1]);
+        if (isNaN(retval.width) || isNaN(retval.height)) return null;
+        return retval;
     },
 }
 
