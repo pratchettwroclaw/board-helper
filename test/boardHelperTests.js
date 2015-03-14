@@ -13,7 +13,7 @@ module.exports = {
         test.done();
     },
     "generateEmptyBoard" : function(test) {
-        test.deepEqual(b.boardHelper.generateEmptyBoard("2*2"),[[,],[,]]);
+        test.deepEqual(b.boardHelper.generateEmptyBoard("2*2"),[{rows: [,]},{rows: [,]}]);
         test.deepEqual(b.boardHelper.generateEmptyBoard("whatever"),null);
         test.done();
     }

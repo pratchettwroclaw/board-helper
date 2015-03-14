@@ -1,7 +1,7 @@
 var boardHelper = {
     update: function() {
         boardHelper.render({
-            board: boardHelper.generateEmptyBoard($("#board-size").val())
+            lines: boardHelper.generateEmptyBoard($("#board-size").val())
         });
     },
     render: function(b) {
@@ -16,7 +16,7 @@ var boardHelper = {
         var size = boardHelper.parseSizeText(sizeText);
         if (size == null) return null;
         for (var i=0;i<size[1];i++) {
-            retval[i] = new Array(size[0]);
+            retval[i] = {rows: new Array(size[0])};
         }
         return retval;
     },
