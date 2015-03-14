@@ -10,20 +10,20 @@ var boardHelper = {
                                                              $("#mdbt").val())));
     },
     render: function(b) {
-        var template = $('#template').html();
+        var template = $('#teamstemplate').html();
         Mustache.parse(template);
         var rendered = Mustache.render(template, b);
-        $('#board').html(rendered);
+        $('#teams').html(rendered);
     },
     generateBoard: function(sizeText, numberOfPoints, minimumDistanceBetweenTeams) {
-        var retval = [];
         var size = boardHelper.parseSizeText(sizeText);
         if (size == null) return null;
-        for (var i=0;i<size[1];i++) {
-            retval[i] = {rows: new Array(size[0])};
-        }
         var sampler = new PoissonDiskSampler( size.width, size.height, minimumDistanceBetweenTeams, 30 );
-        return sampler.sampleUntilSolution().slice(0,numberOfPoints);
+        var retval = sampler.sampleUntilSolution().slice(0,numberOfPoints);
+        for (var i=0; i<retval.length; i++) {
+            retval[i]["number"] = i+1;
+        }
+        return retval;
     },
     parseSizeText: function(sizeText) {
         var res = sizeText.split("*");

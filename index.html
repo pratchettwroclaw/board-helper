@@ -60,24 +60,32 @@
         </div>
     </form>
     <div class="text-center"><button type="button" class="btn btn-lg btn-primary hidden-print" onclick="boardHelper.update()">Recalculate</button></div>
-        <div id="board"></div>
-    <div class="well well-sm">
-        <strong>Legend:</strong>
-        <span class="label label-default">Default</span>
-        <span class="label label-primary">Primary</span>
-        <span class="label label-success">Success</span>
-        <span class="label label-info">Info</span>
-        <span class="label label-warning">Warning</span>
-        <span class="label label-danger">Danger</span>
+    <h3>Teams</h3>
+    <div>
+        <table class="table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>x</th>
+            <th>y</th>
+          </tr>
+        </thead>
+        <tbody id="teams">
+        </tbody>
+        <table>
     </div>
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/mustache.min.js"></script>
     <script src="js/boardhelper.js"></script>
-    <div id="template">
-        {{#teams}}
-            {{.}}
-        {{/teams}}
-    </div>
+    <script id="teamstemplate" type="x-tmpl-mustache">
+    {{#teams}}
+      <tr>
+        <th>{{number}}</th>
+        <td>{{x}}</td>
+        <td>{{y}}</td>
+      </tr>
+    {{/teams}}
+    </script>
 </body>
 </html>

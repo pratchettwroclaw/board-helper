@@ -36,10 +36,12 @@ module.exports = {
         test.done();
     },
     "generateBoardStressTest" : function(test) {
+        var NUMBER_OF_TRIES = 1000;
         var DISTANCE = 2;
-        for (var i=0;i<1000;i++) {
+        for (var i=0;i<NUMBER_OF_TRIES;i++) {
             var a = b.generateBoard("10*10", 2, DISTANCE);
             test.ok(getDistance(a[0], a[1]) > DISTANCE);
+            test.ok(a.length <= 2);
         }
         test.done();
     }
