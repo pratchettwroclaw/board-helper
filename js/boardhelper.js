@@ -1,16 +1,47 @@
 var boardHelper = {
     update: function() {
-        boardHelper.render({
+        boardHelper.renderTeams({
             teams: boardHelper.generateBoard($("#board-size").val(),
                                              $("#teams-no").val(),
                                              $("#mdbt").val()),
         });
+        boardHelper.renderChests({
+            chests: boardHelper.calcGold(boardHelper.generateBoard($("#board-size").val(),
+                                             $("#chests-no").val(),
+                                             $("#mdbch").val()),
+                                         $("#golds").val(),
+                                         $("#goldrnd").val()),
+        });
     },
-    render: function(b) {
+    calcGold: function(board, goldAmount, goldRandomness) {
+        var chestGolds = [];
+        board.forEach(function(x) {
+            chestGolds.push(goldAmount/board.length);
+        });
+        for (var i=0;i<chestGolds.length;i++) {
+            for (var j=0;j<chestGolds.length;j++) {
+                if (i===j) continue;    // not a good idea to take gold from same chest
+                var takenGold = Math.round(chestGolds[j]*getRandomArbitrary(0,goldRandomness));
+                chestGolds[j] = chestGolds[j] - takenGold;
+                chestGolds[i] = chestGolds[i] + takenGold;
+            }
+        }
+        board.forEach(function(x) {
+            x["gold"] = chestGolds.pop();
+        });
+        return board;
+    },
+    renderTeams: function(b) {
         var template = $('#teamstemplate').html();
         Mustache.parse(template);
         var rendered = Mustache.render(template, b);
         $('#teams').html(rendered);
+    },
+    renderChests: function(b) {
+        var template = $('#cheststemplate').html();
+        Mustache.parse(template);
+        var rendered = Mustache.render(template, b);
+        $('#chests').html(rendered);
     },
     generateBoard: function(sizeText, numberOfPoints, minimumDistanceBetweenTeams) {
         var size = boardHelper.parseSizeText(sizeText);
@@ -27,7 +58,7 @@ var boardHelper = {
     parseSizeText: function(sizeText) {
         var res = sizeText.split("*");
         if (res.length !== 2) return null;
-        retval = {};
+        var retval = {};
         retval.width = parseInt(res[0]);
         retval.height = parseInt(res[1]);
         if (isNaN(retval.width) || isNaN(retval.height)) return null;

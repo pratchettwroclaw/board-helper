@@ -44,5 +44,16 @@ module.exports = {
             test.ok(a.length <= 2);
         }
         test.done();
+    },
+    "calcGoldStressTest": function(test) {
+        var NUMBER_OF_TRIES = 10;
+        var SUM_OF_GOLD = 10000;
+        for (var i=0; i<NUMBER_OF_TRIES; i++) {
+            var boards = b.calcGold([{},{}], SUM_OF_GOLD, 0.85);
+            var sum = 0;
+            boards.forEach(function(x){ sum = sum + x.gold;});
+            test.equal(sum, SUM_OF_GOLD);
+        }
+        test.done();
     }
 }
