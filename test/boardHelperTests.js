@@ -18,6 +18,12 @@ var getDistance = function(p1, p2) {
   return d; // returns the distance in meter
 };
 
+var makeEmptyArray = function(length) {
+    var retval = [];
+    for (var i=0; i<length; i++) retval.push({});
+    return retval;
+}
+
 module.exports = {
     "parseSizeText" : function(test) {
         test.deepEqual(b.parseSizeText("2*2"),{width: 2, height: 2});
@@ -46,10 +52,10 @@ module.exports = {
         test.done();
     },
     "calcGoldStressTest": function(test) {
-        var NUMBER_OF_TRIES = 10;
-        var SUM_OF_GOLD = 10000;
+        var NUMBER_OF_TRIES = 1000;
+        var SUM_OF_GOLD = 1000;
         for (var i=0; i<NUMBER_OF_TRIES; i++) {
-            var boards = b.calcGold([{},{}], SUM_OF_GOLD, 0.85);
+            var boards = b.calcGold(makeEmptyArray(100), SUM_OF_GOLD, 0.85);
             var sum = 0;
             boards.forEach(function(x){ sum = sum + x.gold;});
             test.equal(sum, SUM_OF_GOLD);

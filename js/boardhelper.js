@@ -21,8 +21,14 @@ var boardHelper = {
     calcGold: function(board, goldAmount, goldRandomness) {
         var chestGolds = [];
         board.forEach(function(x) {
-            chestGolds.push(goldAmount/board.length);
+            chestGolds.push(Math.floor(goldAmount/board.length));
         });
+        {
+            // If goldAmount cannot be divided equally, let's give what's left to the first chest
+            var goldSum = 0;
+            chestGolds.forEach(function(x) {goldSum = goldSum+x});
+            chestGolds[0] = chestGolds[0] + (goldAmount-goldSum);
+        }
         for (var i=0;i<chestGolds.length;i++) {
             for (var j=0;j<chestGolds.length;j++) {
                 if (i===j) continue;    // not a good idea to take gold from same chest
